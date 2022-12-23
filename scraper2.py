@@ -13,7 +13,7 @@ tableRows = starTable[7].find_all("tr")
 
 for tr in tableRows:
     td = tr.find_all("td")
-    row = [i.text.strip() for i in td]
+    row = [i.text.rstrip() for i in td]
     tempList.append(row)
 
 starName = []
@@ -22,9 +22,9 @@ mass = []
 distance = []
 
 for i in range(1, len(tempList)):
-    starName.append(tempList[i][2])
-    radius.append(tempList[i][9])
-    mass.append(tempList[i][8])
+    starName.append(tempList[i][1])
+    radius.append(tempList[i][8])
+    mass.append(tempList[i][7])
     distance.append(tempList[i][5])
 
 df2 = pd.DataFrame(list(zip(starName, distance, mass, radius)), columns = ["Star Namea", "Distance", "Mass", "Radius"])
